@@ -1,6 +1,7 @@
 from src.generator import sample_data_gen
 from src.validator import DataValidator
 from src.database import save_to_db
+import os
 
 
 def main():
@@ -16,6 +17,7 @@ def main():
     # Handle errors
     if not error_report.empty:
         print(f"\nFound {len(error_report)} corrupted records.")
+        os.makedirs(os.path.dirname("data/processed/error_report.csv"), exist_ok=True)
         error_report.to_csv("data/processed/error_report.csv", index=False)
         print("Error report saved to data/processed/error_report.csv")
     else:
