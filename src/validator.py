@@ -60,7 +60,7 @@ class DataValidator:
         is_bad_email = ~self.clean_data["email"].str.contains("@", na=False)
         if is_bad_email.any():
             bad_rows = self.clean_data[is_bad_email].copy()
-            bad_rows["error_reason"] = "ivalid email dormat"
+            bad_rows["error_reason"] = "Invalid email format"
             self._add_errors(bad_rows)
 
             self.clean_data = self.clean_data[~is_bad_email]
