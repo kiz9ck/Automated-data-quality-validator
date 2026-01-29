@@ -34,7 +34,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Run Data Generator 
-        run: python src/generator.python
+        run: python src/generator.py
 
       - name: Run Main ETL Pipeline
         run: python main.py 
