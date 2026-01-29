@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import random
+import os
 
 
 def sample_data_gen(filename="data/raw/employees.csv"):
@@ -30,6 +31,8 @@ def sample_data_gen(filename="data/raw/employees.csv"):
 
     # Bad Emails
     df.loc[15, "email"] = "kyrylo_kamennyk.com"
+
+    os.makedirs(os.path.dirname(filename), exist_ok=True)   
 
     print(f"generating data with errors to {filename}")
     df.to_csv(filename, index=False)
